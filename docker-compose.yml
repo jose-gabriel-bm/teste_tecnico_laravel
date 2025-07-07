@@ -1,0 +1,35 @@
+services:
+  app:
+    build: ./app/
+    container_name: teste_tecnico_laravel
+    restart: always
+    volumes:
+      - ./app/:/usr/share/nginx/html
+    ports:
+      - "8088:80"
+    networks:
+      - docker2
+
+  database:
+    image: mysql:8.0
+    container_name: database_teste_tecnico_laravel
+    restart: unless-stopped
+    ports:
+      - "3310:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: Mvx189..
+      MYSQL_DATABASE: db_app
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: Mvx189..
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - docker2
+
+volumes:
+  dbdata:
+
+networks:
+  docker2:
+    driver: bridge
+

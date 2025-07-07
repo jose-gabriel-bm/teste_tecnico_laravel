@@ -1,0 +1,39 @@
+  body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  label{
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .input_geral input:focus {
+    border-color: rgb(10, 88, 202); 
+    box-shadow: 0 0 0 0.1rem rgba(10, 87, 202, 0.514); 
+    outline: none;
+  }
+
+  .titulo_auth{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 23px;
+    font-weight: 600;
+    color: rgb(10, 88, 202);
+  }
+
+  .btn_submit{
+    background-color: rgb(10, 88, 202);
+    color: white;
+    border: none;
+  }
+
+  .btn_submit:hover{
+    background-color: rgb(10, 88, 202);
+    color: white;
+    border: none;
+  }
+  
+
+       
