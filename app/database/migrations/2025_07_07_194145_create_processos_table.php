@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('processos', function (Blueprint $table) {
             $table->id();
+            $table->string('titulo');
+            $table->text('descricao')->nullable();
+            $table->enum('status', ['pendente', 'aprovado', 'reprovado'])->default('pendente');
+            $table->string('documento')->nullable();
             $table->timestamps();
         });
     }

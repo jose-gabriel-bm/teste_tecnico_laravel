@@ -34,7 +34,10 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::prefix('/signatarios')->group(function () {
 
     Route::get('/listagem', [SignatoryController::class, 'index'])->name('signatory.index')->middleware('auth');
+    Route::post('/cadastro', [SignatoryController::class, 'register'])->name('signatory.register')->middleware('auth');
+    Route::delete('/delete/{id}', [SignatoryController::class, 'destroy'])->name('signatory.destroy')->middleware('auth');
 
+    Route::post('/update', [SignatoryController::class, 'update'])->name('signatory.update')->middleware('auth');
 });
 
 Route::prefix('/processos')->group(function () {
