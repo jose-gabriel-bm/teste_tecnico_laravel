@@ -28,9 +28,13 @@
   <hr>
     <ul class="nav nav-pills">
       <li>
-        <a href="#" class="nav-link text-dark">
+        <a href="#" class="nav-link text-dark" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
           <i class="bi bi-box-arrow-right me-2"></i> Sair
         </a>
       </li>
     </ul>
+
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+      @csrf
+    </form>
 </nav>

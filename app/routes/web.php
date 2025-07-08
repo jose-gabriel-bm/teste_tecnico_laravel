@@ -20,7 +20,7 @@ use App\Http\Controllers\ProcessesController;
 
 Route::prefix('/login')->group(function () {
 
-    Route::get('', [AuthController::class, 'showLoginForm'])->name('login.form');
+    Route::get('', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('', [AuthController::class, 'logar'])->name('logar');
 
     Route::get('/cadastrar', [AuthController::class, 'showRegisterForm'])->name('register.form');
@@ -28,14 +28,17 @@ Route::prefix('/login')->group(function () {
 
 });
 
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
 Route::prefix('/signatarios')->group(function () {
 
-    Route::get('/listagem', [SignatoryController::class, 'index'])->name('signatory.index');
+    Route::get('/listagem', [SignatoryController::class, 'index'])->name('signatory.index')->middleware('auth');
 
 });
 
 Route::prefix('/processos')->group(function () {
 
-    Route::get('/listagem', [ProcessesController::class, 'index'])->name('processes.index');
+    Route::get('/listagem', [ProcessesController::class, 'index'])->name('processes.index')->middleware('auth');
 
 });
