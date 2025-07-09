@@ -13,14 +13,14 @@
   <body class="bg-light">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
-    <div class="d-flex">
+    <div class="d-flex" style="min-height: 100vh; height: 100%;">
       @unless(request()->is('login*'))
         <div>
           @include('layouts.menuLateral')
         </div>
       @endunless
 
-      <div class="flex-grow-1 p-4">
+      <div class="flex-grow-1 p-4" style="height: 100vh; overflow-y: auto;">
         @yield('content')
       </div>
     </div>
