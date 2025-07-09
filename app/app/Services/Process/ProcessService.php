@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
+use App\Jobs\SendProcessNotification;
 
 class ProcessService
 {
@@ -31,12 +32,16 @@ class ProcessService
     {
         $path = $data['formFile']->store('documentos', 'public');
 
-        return Processo::create([
+        $processo = Processo::create([
             'titulo'  => $data['tituloProcesso'],
             'descricao' => $data['descricaoProcesso'],
             'status' => 'pendente',
             'documento' => $path
         ]);
+
+        dispatch(new SendProcessNotification($processo));
+
+        return($processo);
     }
 
     public function update(array $data): Processo
