@@ -44,23 +44,26 @@ Antes de começar, certifique-se de ter o Composer instalado na sua máquina. Ca
    ```bash
    sudo docker exec -it teste_tecnico_laravel bash
    ```
-
-7. rodar as migrations
+7. instalar as dependencias
+   ```bash
+   composer install
+   ```
+8. rodar as migrations
    ```bash
    php artisan migrate
    ```
 
-8. Startar queue:work
+9. Startar queue:work
    ```bash
    php artisan queue:work
    ```
   ⚠️ O terminal precisa permanecer aberto com o comando <strong style="color:green">php artisan queue:work</strong> rodando, pois é ele que monitora e executa as tarefas pendentes na fila. Sem isso, processos como envio de e-mails ou outras jobs assíncronas não serão realizados.
 
-9. Para utilizar o sistema, acessar:
+10. Para utilizar o sistema, acessar:
    ```bash
    http://localhost:8088/login
    ```
-10. Para testar o envio de e-mail, acessar o link
+11. Para testar o envio de e-mail, acessar o link
    ```bash
    http://localhost:8025/
    ```

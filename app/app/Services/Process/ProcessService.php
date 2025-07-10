@@ -103,6 +103,9 @@ class ProcessService
         } elseif ($request->input('status') === 'reprovado') {
             $processo->status = 'reprovado';
             $processo->save();
+        }else{
+            $processo->status = 'aprovado';
+            $processo->save();
         }
     });
     }
