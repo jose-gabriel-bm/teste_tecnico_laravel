@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <div class="d-flex" style="min-height: 100vh; height: 100%;">
-      @unless(request()->is('login*'))
+      @unless(request()->is('login*') || request()->is('processos/aprovar'))
         <div>
           @include('layouts.menuLateral')
         </div>

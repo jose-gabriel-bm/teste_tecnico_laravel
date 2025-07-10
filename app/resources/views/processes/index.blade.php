@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('title', 'Tela de Signatários')
+@section('title', 'Tela de Processos')
 
 @section('content')
   <div class="container mt-5">

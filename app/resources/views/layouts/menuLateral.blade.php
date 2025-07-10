@@ -16,12 +16,7 @@
     </li>
     <li>
       <a href="/relatorios" class="nav-link {{ request()->is('relatorios') ? 'active' : 'text-dark' }}">
-        <i class="bi bi-bar-chart-fill me-2"></i> Relatórios
-      </a>
-    </li>
-    <li>
-      <a href="/relatorios" class="nav-link {{ request()->is('relatorios') ? 'active' : 'text-dark' }}">
-        <i class="bi bi-exclamation-diamond-fill me-2"></i> Logs
+        <i class="bi bi-bar-chart-fill me-2"></i> Dashboard
       </a>
     </li>
   </ul>

@@ -3,11 +3,13 @@
 namespace App\Services\Process;
 
 use App\Models\Processo;
+use App\Models\AprovacaoProcesso;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use App\Jobs\SendProcessNotification;
+use Illuminate\Support\Facades\DB;
 
 class ProcessService
 {
@@ -60,5 +62,48 @@ class ProcessService
         $processo->update($updateData);
 
         return $processo;
+    }
+
+    public function filter($request)
+    {
+        $status = $request->input('statusProcesso');
+
+        $query = Processo::query();
+
+        if ($status && $status !== 'todos') {
+            $query->where('status', $status);
+        }
+
+        $processos = $query->get();
+
+        return $processos;
+    }
+
+    public function aprovacoesProcessos($request)
+    {
+        DB::transaction(function () use ($request) {
+
+            AprovacaoProcesso::create([
+            'processo_id'    => $request->input('id_processo'),
+            'signatario_id'  => $request->input('id_signatario'),
+            'status'         => $request->input('status'),
+            'data_hora'      => now(),
+            'justificativa'  => $request->input('justificativa'),
+        ]);
+
+        $jaReprovado = AprovacaoProcesso::where('processo_id', $request->input('id_processo'))
+            ->where('status', 'reprovado')
+            ->exists();
+
+        $processo = Processo::findOrFail($request->input('id_processo'));
+
+        if ($jaReprovado) {
+            $processo->status = 'reprovado';
+            $processo->save();
+        } elseif ($request->input('status') === 'reprovado') {
+            $processo->status = 'reprovado';
+            $processo->save();
+        }
+    });
     }
 }

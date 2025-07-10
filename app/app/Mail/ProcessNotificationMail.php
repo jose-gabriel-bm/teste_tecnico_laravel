@@ -27,7 +27,7 @@ class ProcessNotificationMail extends Mailable
 
     public function build()
     {
-        $link = route('processes.aprovar', ['id' => $this->processo->id, 'email' => $this->signatario->email]);
+        $link = route('processes.aprovar', ['id' => $this->processo->id, 'id_signatario' => $this->signatario->id]);
 
         return $this->subject('Novo processo para aprovação')
             ->markdown('emails.process.notification')

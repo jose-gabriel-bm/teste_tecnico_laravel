@@ -23,40 +23,44 @@ Antes de começar, certifique-se de ter o Composer instalado na sua máquina. Ca
 
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/seu-usuario/seu-projeto.git
+   git clone https://github.com/jose-gabriel-bm/teste_tecnico_laravel.git
    ```
+2. Duplicar arquivo .env.example
 
-2. Dentro da Pasta do projeto, rodar o comando:
+3. Renomear a duplicada para .env
+
+
+4. Dentro da Pasta do projeto, rodar o comando:
    ```bash
    docker compose up -d
    ```
 
-3. Listar os containers docker:
+5. Listar os containers docker:
    ```bash
    sudo docker ps -a
    ```
 
-4. conctar ao container do laravel:
+6. conctar ao container do laravel:
    ```bash
    sudo docker exec -it teste_tecnico_laravel bash
    ```
 
-5. rodar as migrations
+7. rodar as migrations
    ```bash
    php artisan migrate
    ```
 
-6. Startar queue:work
+8. Startar queue:work
    ```bash
    php artisan queue:work
    ```
   ⚠️ O terminal precisa permanecer aberto com o comando <strong style="color:green">php artisan queue:work</strong> rodando, pois é ele que monitora e executa as tarefas pendentes na fila. Sem isso, processos como envio de e-mails ou outras jobs assíncronas não serão realizados.
 
-7. Para utilizar o sistema, acessar:
+9. Para utilizar o sistema, acessar:
    ```bash
    http://localhost:8088/login
    ```
-8. Para testar o envio de e-mail, acessar o link
+10. Para testar o envio de e-mail, acessar o link
    ```bash
    http://localhost:8025/
    ```
